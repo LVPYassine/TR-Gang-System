@@ -62,9 +62,9 @@ static MySQL:handle;
 //script
 public OnFilterScriptInit()
 {
-  if(MYSQL == true)
+	if(MYSQL == true)
 	{
-		  handle = mysql_connect(MySQL_Host, MySQL_User, MySQL_Password, MySQL_Database);
+		handle = mysql_connect(MySQL_Host, MySQL_User, MySQL_Password, MySQL_Database);
 	    mysql_log(ALL);
 	    if(mysql_errno() != 0)
 	    {
@@ -102,7 +102,7 @@ public OnFilterScriptInit()
 	{
 
 	}
-  return 1;
+	return 1;
 }
 
 public OnFilterScriptExit()
