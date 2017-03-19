@@ -62,47 +62,41 @@ static MySQL:handle;
 //script
 public OnFilterScriptInit()
 {
-	if(MYSQL == true)
-	{
-		handle = mysql_connect(MySQL_Host, MySQL_User, MySQL_Password, MySQL_Database);
-	    mysql_log(ALL);
-	    if(mysql_errno() != 0)
-	    {
-	    	print("  [TR Gang System]: Failed to load the moneybag system.");
-	    	print("  [TR Gang System]: MySQL Connection Failed.	 ");
-	    	print("     TR Gang System By TitanX & RyderX © 2017	");
-	    	return 1;
-	    }
-	    else
-	    {
-	    	print("  [TR Gang System]: MySQL connection success.");
-
-	    	mysql_query(handle, "CREATE TABLE IF NOT EXISTS `Gangs` (`GangID` INT(5), `GangName` VARCHAR(24), `MaxRanks` INT(12), `Color` INT(12), `Skin` INT(3),\
-	    	 `FounderName` VARCHAR(24), `Cash` INT(12), `Kills` INT(5))");
-
-	    	mysql_query(handle, "CREATE TABLE IF NOT EXISTS `Members` (`MemberName` VARCHAR(24), `GangID` INT(5), `GangName` VARCHAR(24), `GangColor` INT(1))")
-	    	print("  [TR Gang System]: Tables created.");
-
-	    	#if defined WEAPONS_BOUNS
-
-	    	print("  [TR Gang System]: Loading Zones....");
-	    	LoadZones();
-
-	    	print("  *---------------------------------*");
-	   		print("  | TR Gang System has been loaded  |");
-	    	print("  |---------------------------------|");
-	    	print("  |    Authors: RyderX & TitanX     |");
-	    	print("  |---------------------------------|");
-	    	print("  |    Version: 1.0 |   Build: 1    |");
-	    	print("  *---------------------------------*");
-	    	return 1;
-	    }
-	}
-	else if(SQLITE == true)
-	{
-
-	}
-	return 1;
+    if(MYSQL == true)
+    {
+        handle = mysql_connect(MySQL_Host, MySQL_User, MySQL_Password, MySQL_Database);
+        mysql_log(ALL);
+        if(mysql_errno() != 0)
+        {
+            print(" [TR Gang System]: Failed to load the moneybag system.");
+            print(" [TR Gang System]: MySQL Connection Failed.	");
+            print(" TR Gang System By TitanX & RyderX © 2017	");
+            return 1;
+        }
+        else
+        {
+            print(" [TR Gang System]: MySQL connection success.");
+            mysql_query(handle, "CREATE TABLE IF NOT EXISTS `Gangs` (`GangID` INT(5), `GangName` VARCHAR(24), `MaxRanks` INT(12), `Color` INT(12), `Skin` INT(3),\
+            `FounderName` VARCHAR(24), `Cash` INT(12), `Kills` INT(5))");
+            mysql_query(handle, "CREATE TABLE IF NOT EXISTS `Members` (`MemberName` VARCHAR(24), `GangID` INT(5), `GangName` VARCHAR(24), `GangColor` INT(1))")
+            print(" [TR Gang System]: Tables created.");
+            #if defined WEAPONS_BOUNS
+            print(" [TR Gang System]: Loading Zones....");
+            LoadZones();
+            print(" *---------------------------------*");
+            print(" | TR Gang System has been loaded |");
+            print(" |---------------------------------|");
+            print(" | Authors: RyderX & TitanX |");
+            print(" |---------------------------------|");
+            print(" | Version: 1.0 | Build: 1 |");
+            print(" *---------------------------------*");
+            return 1;
+        }
+    }
+    else if(SQLITE == true)
+    {
+    }
+    return 1;
 }
 
 public OnFilterScriptExit()
